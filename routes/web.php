@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BibliothequeController;
 
+Route::get('/', [BibliothequeController::class, 'home'])->name("livre.home");
 Route::get('/rechercher/{auteur_id}', [BibliothequeController::class, 'rechercher'])->name("livre.rechercher");
 
 Route::get('/editer/{id}', [BibliothequeController::class, 'editer'])->name("livre.editer");

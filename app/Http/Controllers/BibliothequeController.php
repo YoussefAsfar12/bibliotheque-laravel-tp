@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auteur;
 use App\Models\Livre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -11,6 +12,12 @@ class BibliothequeController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function home(){
+        $auteurs = Auteur::paginate(10);
+        return view('home',compact('auteurs'));
+    }
+
     public function rechercher($auteurId)
     {
         $livres = Livre::with('auteur')->where('auteur_id', $auteurId)->paginate(10);
